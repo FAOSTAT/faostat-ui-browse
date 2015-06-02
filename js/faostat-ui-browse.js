@@ -1,7 +1,7 @@
 define(['jquery',
         'require',
         'handlebars',
-        'text!faostat_ui_browse/html/templates.html',
+        'text!faostat_ui_browse/html/templates.hbs',
         'i18n!faostat_ui_browse/nls/translate',
         'FAOSTAT_UI_COMMONS',
         'bootstrap',
@@ -45,7 +45,8 @@ define(['jquery',
 
     BROWSE.prototype.render = function($placeholder, config) {
 
-        var source = $(templates).filter('#structure').html();
+        var source = $(templates).html();
+        console.log(source);
         var template = Handlebars.compile(source);
         var dynamic_data = {
             title: translate.browse
