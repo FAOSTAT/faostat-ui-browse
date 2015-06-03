@@ -27,7 +27,6 @@ define(['jquery',
     }
 
     BROWSE.prototype.init = function(config) {
-
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
 
