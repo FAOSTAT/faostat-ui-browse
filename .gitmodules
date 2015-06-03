@@ -1,3 +1,6 @@
 [submodule "submodules/faostat-ui-browse-by-domain"]
 	path = submodules/faostat-ui-browse-by-domain
 	url = https://github.com/FAOSTAT4/faostat-ui-browse-by-domain.git
+[submodule "submodules/faostat-ui-browse-by-country"]
+	path = submodules/faostat-ui-browse-by-country
+	url = https://github.com/FAOSTAT4/faostat-ui-browse-by-country.git
