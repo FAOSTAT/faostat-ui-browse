@@ -58,11 +58,13 @@ define(['jquery',
         };
         switch(config.section) {
             case "domain":
-                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN',  $.extend(true, obj, this.CONFIG.browse_by_domain));
+                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN', $.extend(true, obj, this.CONFIG.browse_by_domain));
                 break;
             case "country":
+                this.loadModule('FAOSTAT_UI_BROWSE_BY_COUNTRY', $.extend(true, obj, this.CONFIG.browse_by_country));
                 break;
             case "rankings":
+                this.loadModule('FAOSTAT_UI_BROWSE_BY_RANKINGS', $.extend(true, obj, this.CONFIG.browse_by_rankings));
                 break;
         }
 
