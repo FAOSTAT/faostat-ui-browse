@@ -52,14 +52,13 @@ define(['jquery',
         };
         var html = template(dynamic_data);
 
-        /* Extend default configuration. */
-        /* TODO: get it from the schema **/
-        // i.e. this.CONFIG[config.section]
-        var obj = $.extend(true, {}, this.CONFIG, {placeholder_id: '[data-role="content"]'});
-
+        // load browse module with it's own configuration
+        var obj = {
+            placeholder_id: '[data-role="content"]'
+        };
         switch(config.section) {
             case "domain":
-                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN', obj);
+                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN',  $.extend(true, obj, this.CONFIG.browse_by_domain));
                 break;
             case "country":
                 break;
