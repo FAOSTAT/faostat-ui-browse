@@ -1,3 +1,4 @@
+/*global define*/
 define(['jquery',
         'require',
         'handlebars',
@@ -31,7 +32,7 @@ define(['jquery',
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
 
         /* Fix the language, if needed. */
-        this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
+        this.CONFIG.lang = this.CONFIG.lang !== null ? this.CONFIG.lang : 'en';
 
         /* Store FAOSTAT language. */
         this.CONFIG.lang_faostat = FAOSTATCommons.iso2faostat(this.CONFIG.lang);
@@ -46,7 +47,6 @@ define(['jquery',
     BROWSE.prototype.render = function($placeholder, config) {
 
         var source = $(templates).html();
-        console.log(source);
         var template = Handlebars.compile(source);
         var dynamic_data = {
             title: translate.browse
@@ -60,7 +60,7 @@ define(['jquery',
 
         switch(config.section) {
             case "domain":
-                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN', obj)
+                this.loadModule('FAOSTAT_UI_BROWSE_BY_DOMAIN', obj);
                 break;
             case "country":
                 break;
@@ -74,20 +74,24 @@ define(['jquery',
 
     BROWSE.prototype.loadModule = function(module, config) {
         var _this = this;
+
         Require([module], function (MODULE) {
             _this.CONFIG.module = new MODULE();
-            _this.CONFIG.module.init(config)
+            _this.CONFIG.module.init(config);
         });
-    }
+    };
 
     BROWSE.prototype.createSubMenu = function() {
         // TODO: create submenu with routing
-    }
+        return true;
+    };
 
     BROWSE.prototype.destroy = function() {
         // TODO: destroy
-        console.log("destroy");
-        if (this.CONFIG.module) this.CONFIG.module.destroy();
+        //console.log("destroy");
+        if (this.CONFIG.module) {
+            this.CONFIG.module.destroy();
+        }
     };
 
     return BROWSE;
